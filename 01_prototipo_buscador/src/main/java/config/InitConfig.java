@@ -9,7 +9,7 @@ import controller.config.MvcConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRegistration;
-import service.config.ModelConfig;
+import service.config.ServiceConfig;
 
 public class InitConfig implements WebApplicationInitializer {
 	//se ejecuta al iniciarse la aplicación
@@ -17,7 +17,7 @@ public class InitConfig implements WebApplicationInitializer {
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		// Registra la clase de configuración del modelo
 		AnnotationConfigWebApplicationContext rootContext =new AnnotationConfigWebApplicationContext();
-		rootContext.register(ModelConfig.class);
+		rootContext.register(ServiceConfig.class);
 		// Registra la clase de configuración del controlador
 		AnnotationConfigWebApplicationContext dispatcherContext =new AnnotationConfigWebApplicationContext();
 		dispatcherContext.register(MvcConfig.class);
