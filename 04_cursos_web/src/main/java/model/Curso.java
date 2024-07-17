@@ -10,7 +10,7 @@ public class Curso {
 		this.precio = precio;
 	}
 	public Curso() {
-		
+		nombre="Java";
 	}
 	public String getNombre() {
 		return nombre;

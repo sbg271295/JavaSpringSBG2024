@@ -14,6 +14,7 @@ import service.BuscadorService;
 
 @Controller
 public class BuscadorController {
+	
 	@Autowired
 	BuscadorService service;
 	@GetMapping(value="buscar")
@@ -41,4 +42,7 @@ public class BuscadorController {
 	public String paginaInicio() {
 		return "inicio";
 	}
+	
+	
+	
 }

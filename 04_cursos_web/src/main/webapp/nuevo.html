@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Expires" content="0">
@@ -40,9 +40,9 @@ input {
 	<div>
 		<h1>Añadir nuevo curso</h1>
 		<form action="alta" method="post">
-			Nombre curso:<input type="text" name="nombre" placeholder="Nombre del curso"><br>
-			Duración curso:<input type="text" name="duracion" placeholder="Duración del curso"><br> 
-			Precio curso:<input type="text" name="precio" placeholder="Precio del curso"> <br>
+			Nombre curso:<input type="text" th:field="${curso.nombre}"><br>
+			Duración curso:<input type="text" th:field="${curso.duracion}"><br> 
+			Precio curso:<input type="text" th:field="${curso.precio}"> <br>
 			<input type="submit" value="Alta">
 		</form>
 		<br>

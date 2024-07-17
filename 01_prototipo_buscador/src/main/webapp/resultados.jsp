@@ -12,8 +12,9 @@
 			<h2><a href="${r.url}">${r.url}</a></h2>
 			<h4>${r.descripcion}</h4>
 			<hr>
+		
 	</c:forEach>
 	<br>
-	<a href="FrontController?operation=toInicio">Volver</a>
+	<a href="toInicio">Volver</a>
 </body>
 </html>

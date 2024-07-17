@@ -5,10 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-//Con esta anotacion se le otorga informacion del paquete que tiene que ;
-//instanciar para aplicar;
-@ComponentScan(basePackages= {"controller"})
-//Esta anotacion siempre debe ir antes del Configuration;
+@ComponentScan(basePackages = {"controller"})
 @EnableWebMvc
 @Configuration
 public class MvcConfig {
