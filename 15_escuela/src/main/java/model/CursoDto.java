@@ -1,34 +1,24 @@
-package entities;
+package model;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-@Entity
-@Table(name="cursos")
-public class Curso {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CursoDto {
 	private int idCurso;
 	private String nombre;
 	private int duracion;
 	private LocalDate fechaInicio;
 	private double precio;
-	@ManyToMany(mappedBy = "cursos")
-	private Set<Alumno> alumnos;
-	public Curso(int idCurso, String nombre, int duracion, LocalDate fechaInicio, double precio) {
+	private List<AlumnoDto> alumnos;
+	public CursoDto(int idCurso, String nombre, int duracion, LocalDate fechaInicio, double precio,List<AlumnoDto> alumnos) {
 		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.duracion = duracion;
 		this.fechaInicio = fechaInicio;
 		this.precio = precio;
+		this.alumnos=alumnos;
 	}
-	public Curso() {
+	public CursoDto() {
 	}
 	public int getIdCurso() {
 		return idCurso;
@@ -60,10 +50,10 @@ public class Curso {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public Set<Alumno> getAlumnos() {
+	public List<AlumnoDto> getAlumnos() {
 		return alumnos;
 	}
-	public void setAlumnos(Set<Alumno> alumnos) {
+	public void setAlumnos(List<AlumnoDto> alumnos) {
 		this.alumnos = alumnos;
 	}
 	
