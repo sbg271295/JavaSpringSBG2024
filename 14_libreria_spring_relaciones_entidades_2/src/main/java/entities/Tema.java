@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,10 @@ public class Tema {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTema;
 	private String tema;
-	@OneToMany(mappedBy = "tema")
+	//¿Tu quieres que cuando se borre un tema se borren los libros?
+	//El cascadeType evita que en este caso, se queden libros
+	//huerfanos sin tema.
+	@OneToMany(mappedBy = "tema",cascade=CascadeType.REMOVE)
 	private List<Libro> libros;
 	
 	public Tema(int idTema, String tema) {
