@@ -18,8 +18,7 @@ public class Alumno {
 	private String nombre;
 	private String email;
 	private int edad;
-	@OneToMany(mappedBy="alumno")
-
+	@OneToMany(mappedBy = "alumno")
 	private Set<Matricula> matriculas;
 	public Alumno(String usuario, String password, String nombre, String email, int edad) {
 		this.usuario = usuario;
@@ -66,5 +65,6 @@ public class Alumno {
 	public void setMatriculas(Set<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
+	
 	
 }
