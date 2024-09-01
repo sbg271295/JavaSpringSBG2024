@@ -35,14 +35,14 @@
             <div class="mb-4">
                 <label for="alumnoSel" class="form-label">Selecciona un alumno</label>
                 <select id="alumnoSel" class="form-select">
-                    <!-- Opciones se llenan dinámicamente -->
+                     <option th:each="a:${alumnos}" th:value="${a.usuario}" th:text="${a.usuario}"></option>
                 </select>
             </div>
 
             <div class="mb-4">
                 <label for="cursoSel" class="form-label">Selecciona un Curso</label>
                 <select id="cursoSel" class="form-select">
-                    <!-- Opciones se llenan dinámicamente -->
+                     <option th:each="c:${cursos}" th:value="${c.idCurso}" th:text="${c.nombre}"></option>
                 </select>
             </div>
 
@@ -52,23 +52,33 @@
         <!-- Contenedor del formulario para Nuevo Alumno -->
         <div id="nuevoAlumno" class="form-container">
             <div class="mb-4">
-                <label for="nombreNuevo" class="form-label">Nombre</label>
-                <input type="text" id="nombreNuevo" class="form-control">
-            </div>
-
-            <div class="mb-4">
                 <label for="usuarioNuevo" class="form-label">Usuario</label>
                 <input type="text" id="usuarioNuevo" class="form-control">
             </div>
-
+            <div class="mb-4">
+                <label for="passwordNuevo" class="form-label">Password</label>
+                <input type="text" id="passwordNuevo" class="form-control">
+            </div>
+             <div class="mb-4">
+                <label for="nombreNuevo" class="form-label">Nombre</label>
+                <input type="text" id="nombreNuevo" class="form-control">
+            </div>
+            <div class="mb-4">
+                <label for="emailNuevo" class="form-label">Email</label>
+                <input type="text" id="emailNuevo" class="form-control">
+            </div>
+           <div class="mb-4">
+                <label for="edadNuevo" class="form-label">Edad</label>
+                <input type="text" id="edadNuevo" class="form-control">
+            </div>
             <div class="mb-4">
                 <label for="cursoNuevo" class="form-label">Selecciona un Curso</label>
                 <select id="cursoNuevo" class="form-select">
-                    <!-- Opciones se llenan dinámicamente -->
+                      <option th:each="c:${cursos}" th:value="${c.idCurso}" th:text="${c.nombre}"></option>
                 </select>
             </div>
 
-            <button id="guardarNuevoAlumno" class="btn btn-primary">Guardar Nuevo Alumno</button>
+            <button id="matricularNuevoAlumno" class="btn btn-primary">Guardar Nuevo Alumno</button>
         </div>
     </div>
 
@@ -143,11 +153,14 @@
         });
 
         // Función para guardar nuevo alumno
-        $("#guardarNuevoAlumno").click(function() {
-            var url = "altaNuevoAlumno";
+        $("#matricularNuevoAlumno").click(function() {
+            var url = "matricularNuevoAlumno";
             var params = {
-                "nombre": $("#nombreNuevo").val(),
                 "usuario": $("#usuarioNuevo").val(),
+                "password": $("#passwordNuevo").val(),
+                "nombre": $("#nombreNuevo").val(),
+                "email": $("#emailNuevo").val(),
+                "edad": $("#edadNuevo").val(),
                 "idCurso": $("#cursoNuevo").val()
             };
             $.post(url, params, function(data) {

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dao.AlumnosDao;
 import dao.CursosDao;
 import entities.Alumno;
+import jakarta.transaction.TransactionScoped;
 import model.AlumnoDto;
 import model.CursoDto;
 import utilidades.Mapeador;
@@ -32,7 +33,14 @@ public class FormacionServiceImpl implements FormacionService {
 				.map(c->mapeador.cursoEntityToDto(c))
 				.toList(); 
 	}
-
+	@Transactional
+	@Override
+	public List<AlumnoDto> alumnos() {
+		return alumnosDao.findAll().stream()
+				.map(a->mapeador.alumnoEntityToDto(a))
+				.toList();
+				
+	}
 	@Override
 	public List<AlumnoDto> buscarAlumnosMatriculados(int idCurso) {
 		return alumnosDao.findByIdCurso(idCurso).stream()
@@ -70,13 +78,6 @@ public class FormacionServiceImpl implements FormacionService {
 				.map(c->mapeador.cursoEntityToDto(c))
 				.orElse(null);
 	}
-	@Override
-	public List<AlumnoDto> alumnos() {
-		return alumnosDao.findAll().stream()
-				.map(a->mapeador.alumnoEntityToDto(a))
-				.toList();
-				
-	}
 	@Transactional
 	@Override
 	public List<CursoDto> cursosNoAlumno(String usuario) {
@@ -94,7 +95,6 @@ public class FormacionServiceImpl implements FormacionService {
 			return true;
 		}
 		return false;
-		
 	}
 
 }
